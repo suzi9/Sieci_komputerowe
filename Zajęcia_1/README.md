@@ -1,4 +1,4 @@
-Ładowanie konfiguracji dla JUNOS
+Ładowanie konfiguracji dla JUNOS, komendy:
 
 ```
 > configure private
