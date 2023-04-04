@@ -46,6 +46,8 @@ Wyświetlenie konfiguracji wybranego interfejsu, np. ge-0/0/1:
 ```
 
 ## Wyświetlanie tablicy ARP
+Tablica ARP zawiera informacje (adres IP i MAC) innych urządzeń w sieci, z którym nasze urządzenie\
+ma nawiązane połączenie.
 ```ps1
 > show arp
 ```
