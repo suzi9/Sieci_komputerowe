@@ -73,6 +73,16 @@ Wyświetlanie bieżącego stanu tablicy routingu, która zawiera informacje o ak
 ```
 Wynik powyższego polecenia zwróci listę pośredniczących adresów IP, pomiędzy początkowym a docelowym adresem IP.
 
+## Komendy pomocnicze
+Przywrócenie konfiguracji do wcześniejszej wersji:
+```ps1
+> rollback
+```
+Przywrócenie konfiguracji do konkretnej wcześniejszej wersji (0 oznacza aktualny stan, więc 1 będzie oznaczać wcześniejszą wersję):
+```ps1
+> rollback 1
+```
+
 ## Informacje dodatkowe
 Oznaczenie ">" przy komendach służy tylko i wyłącznie do ich wyodrębnienia w tym dokumencie.\
 Należy pamiętać że terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
