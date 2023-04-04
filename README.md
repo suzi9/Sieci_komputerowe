@@ -66,6 +66,13 @@ Wyświetlanie bieżącego stanu tablicy routingu, która zawiera informacje o ak
 > run show route
 ```
 
+## Śledzenie pakietów
+Śledzenie drogi pakietów IP do docelowego adresu IP:
+```ps1
+> run traceroute 172.0.0.1  (172.0.0.1 to przykładowy docelowy adres IP)
+```
+Wynik powyższego polecenia zwróci listę pośredniczących adresów IP, pomiędzy początkowym a docelowym adresem IP.
+
 ## Informacje dodatkowe
 Oznaczenie ">" przy komendach służy tylko i wyłącznie do ich wyodrębnienia w tym dokumencie.\
 Należy pamiętać że terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
