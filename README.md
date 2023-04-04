@@ -66,4 +66,4 @@ Wyświetlanie bieżącego stanu tablicy routingu, która zawiera informacje o ak
 
 ## Informacje dodatkowe
 Oznaczenie ">" przy komendach służy tylko i wyłącznie do ich wyodrębnienia w tym dokumencie.\
-W terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
+Należy pamiętać że terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
