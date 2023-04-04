@@ -28,10 +28,42 @@ Wyświetlanie wszystkich szczegółów o interfejsach:
 ```ps1
 > show interfaces
 ```
-Natomiast gdy potrzebujemy krótkiego podsumowania o interfejsach, korzystamy z polecenia:
+Natomiast gdy potrzebujemy wyswietlić krótkie podsumowanie konfiguracji interfejsów, korzystamy z polecenia:
 ```ps1
 > show interfaces terse
 ```
+Wyświetlenie bieżącego stanu interfejsów (pokazuje np. czy interfejs jest włączony lub też wyłączony): 
+```ps1
+> run show interfaces terse
+```
+Wyświetlenie konfiguracji interfejsów:
+```ps1
+> show configuration interfaces
+```
+Wyświetlenie konfiguracji wybranego interfejsu, np. ge-0/0/1:
+```ps1
+> show configuration interfaces ge-0/0/1 
+```
+
+## Wyświetlanie tablicy ARP
+```ps1
+> show arp
+```
+Wyświetlanie tablicy ARP dla konkretnego interfejsu, np. ge-0/0/1:
+```ps1
+> show arp intereface ge-0/0/1
+```
+
+## Wyświetlanie tablicy routingu
+Wyświetlanie tablicy routingu, która zawiera informacje o skonfigurowanych trasach sieciowych:
+```ps1
+> show route
+```
+Wyświetlanie bieżącego stanu tablicy routingu, która zawiera informacje o aktualnych trasach sieciowych:
+```ps1
+> run show route
+```
+
 ## Informacje dodatkowe
 Oznaczenie ">" przy komendach służy tylko i wyłącznie do ich wyodrębnienia w tym dokumencie,\
-na terminalu urządzenia mogą występować różne znaki, w zależności od nabytych praw dostępu.
+w terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
