@@ -85,4 +85,4 @@ Przywrócenie konfiguracji do konkretnej wcześniejszej wersji (0 oznacza aktual
 
 ## Informacje dodatkowe
 Oznaczenie ">" przy komendach służy tylko i wyłącznie do ich wyodrębnienia w tym dokumencie.\
-Należy pamiętać że terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
+Należy pamiętać że w terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
