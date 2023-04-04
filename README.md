@@ -1,4 +1,4 @@
-## Ładowanie konfiguracji:
+## Ładowanie konfiguracji
 
 Załadowanie konfiguracji wykonujemy tylko raz na danym routerze. Aby następnie na tej konfiguracji mogła\
 pracować cała grupa. 
@@ -12,7 +12,7 @@ Osoby które zalogowały się na router przed załadowaniem konfiguracji, muszą
 > update
 ```
 
-## Zapisywanie konfiguracji:
+## Zapisywanie konfiguracji
 
 Konfigurację powinna zapisać ostatnia osoba która planuje zakończyć działania na dzisiaj.\
 Ale jeżeli została by kilka razy zapisana, to się nic nie stanie bo jest wtedy nadpisywana.\
@@ -65,5 +65,5 @@ Wyświetlanie bieżącego stanu tablicy routingu, która zawiera informacje o ak
 ```
 
 ## Informacje dodatkowe
-Oznaczenie ">" przy komendach służy tylko i wyłącznie do ich wyodrębnienia w tym dokumencie,\
-w terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
+Oznaczenie ">" przy komendach służy tylko i wyłącznie do ich wyodrębnienia w tym dokumencie.\
+W terminalu mogą występować różne znaki zachęty, w zależności od nabytych praw dostępu.
