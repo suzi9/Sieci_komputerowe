@@ -21,9 +21,9 @@ który dostaliśmy od prowadzącego.
 UWAGA -> commit robimy dopiero po wpisaniu tych dwóch komend
 ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mieć inną postać
 ```ps1
-set interfaces lo0.'NUMEREK' family inet address 192.'NUMEREK'.0.'KONIEC_IP_ROUTERA'/32
-set routing-instances 'ROUTERX' interface lo0.'NUMEREK'
-commit
+> set interfaces lo0.'NUMEREK' family inet address 192.'NUMEREK'.0.'KONIEC_IP_ROUTERA'/32
+> set routing-instances 'ROUTERX' interface lo0.'NUMEREK'
+> commit
 ```
 
 ### 3 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
