@@ -16,7 +16,7 @@
 ### 2 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
 ## Konfigurowanie adresu loopback na routerach korzystających z protokołu OSPF
-Wszysto co jest w '' np. 'NUMEREK' wymienamy np. na 2. Czyli swój własny numerek/
+Wszysto co jest w '' np. 'NUMEREK' wymienamy np. na 2. Czyli swój własny numerek \
 który dostaliśmy od prowadzącego.
 UWAGA -> commit robimy dopiero po wpisaniu tych dwóch komend
 ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mieć inną postać
@@ -73,11 +73,11 @@ ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mi
 ### 8 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
 ## Konfigurowanie routingu statycznego
-Pamiętać że w routingu statycznym korzystamy z adresu sieci, czyli np. na kartce z obliczeniami/
-mamy VLAN o numerze 251 -> są tu 2 urządzenia -> a jego ADRES SIECI TO: 145.168.2.192/30/
+Pamiętać że w routingu statycznym korzystamy z adresu sieci, czyli np. na kartce z obliczeniami \
+mamy VLAN o numerze 251 -> są tu 2 urządzenia -> a jego ADRES SIECI TO: 145.168.2.192/30 \
 I ten adres sieci WRAZ Z MASKĄ zapisujemy w tej komendzie:
 
-[Adres_sieci] -> przykładowy zapis w komendzie: 145.168.2.192/30/
+[Adres_sieci] -> przykładowy zapis w komendzie: 145.168.2.192/30 \
 [IP_routera] -> przykładowy zapis w komendzie: 193.168.X.30      -> pamiętamy że zapisujemy bez maski
 
 ```ps1
