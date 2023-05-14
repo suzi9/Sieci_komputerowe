@@ -1,21 +1,21 @@
-### 1 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+## 1 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
-## Tworzymy wirtualny router i dodajemy do niego interfejs
+# Tworzymy wirtualny router i dodajemy do niego interfejs
 ```ps1
 > set routing-instance ROUTERX instance-type virtual-router
 > set routing-instance ROUTERX interface ge-0/0/1.X00 
 ```
 
-## Konfigurujemy vlan i interfejs
+# Konfigurujemy vlan i interfejs
 ```ps1
 > set interfaces ge-0/0/1 vlan-tagging
 > set interfaces ge-0/0/1 unit X00 vlan-id X00
 > set interfaces ge-0/0/1 unit X00 family inet address 192.168.X.INTERFEJS (np .9/30)
 ```
 
-### 2 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+## 2 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
-## Konfigurowanie adresu loopback na routerach korzystających z protokołu OSPF
+# Konfigurowanie adresu loopback na routerach korzystających z protokołu OSPF
 Wszysto co jest w '' np. 'NUMEREK' wymienamy np. na 2. Czyli swój własny numerek \
 który dostaliśmy od prowadzącego.
 UWAGA -> commit robimy dopiero po wpisaniu tych dwóch komend
@@ -26,9 +26,11 @@ ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mi
 > commit
 ```
 
-### 3 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# Sprawdzanie poprawności konfiguracji adresu loopback
 
-## Konfigurowanie protokołu OSPF
+## 3 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+
+# Konfigurowanie protokołu OSPF
 ```ps1
 > set routing-instances 'ROUTERX' protocols ospf area 0 interface ge-0/0/'INTERFEJS'.'VLAN'
 ```
@@ -37,22 +39,22 @@ ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mi
 ## czy to coś zmienia?????????????????
 
 
-### 4 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+## 4 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
-## Konfigurowanie protokołu RIP
+# Konfigurowanie protokołu RIP
 ```ps1
 > set routing-instances ROUTERX protocols rip group GRUPA1 neighbor ge-0/0/1.X00
 ```
 
-### 5 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+## 5 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
-## Rozgłaszanie w protokole RIP wszystkich informacji o trasach otrzymanych z protokołu RIP
+# Rozgłaszanie w protokole RIP wszystkich informacji o trasach otrzymanych z protokołu RIP
 ```ps1
 > set policy-options policy-statement FROM-RIP-X from protocol rip
 > set policy-options policy-statement FROM-RIP-X then accept
 > set routing-instances ROUTERX protocols rip group GRUPA1 export FROM-RIP-X
 ```
-## Rozgłaszanie w protokole RIP wszystkie informacje trasy bezpośrednio podłączonej
+# Rozgłaszanie w protokole RIP wszystkie informacje trasy bezpośrednio podłączonej
 ```ps1
 > set policy-options policy-statement FROM-DIRECT-X from protocol direct
 > set policy-options policy-statement FROM-DIRECT-X then accept
@@ -60,9 +62,9 @@ ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mi
 ```
 
 
-### 7 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+## 7 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
-## Polityka zapewniająca to że adresy interfejsów loopback nie będą rozgłaszane przez protokół RIP oraz OSPF
+# Polityka zapewniająca to że adresy interfejsów loopback nie będą rozgłaszane przez protokół RIP oraz OSPF
 ```ps1
 > set policy-options policy-statement REJECT-LOOPBACK-'NUMEREK' from interface lo0.'NUMEREK'
 > set policy-options policy-statement REJECT-LOOPBACK-'NUMEREK' then reject
@@ -70,9 +72,9 @@ ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mi
 > set protocols ospf export REJECT-LOOPBACK-'NUMEREK'  ## i tą również 
 ```
 
-### 8 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+## 8 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
-## Konfigurowanie routingu statycznego
+# Konfigurowanie routingu statycznego
 Pamiętać że w routingu statycznym korzystamy z adresu sieci, czyli np. na kartce z obliczeniami \
 mamy VLAN o numerze 251 -> są tu 2 urządzenia -> a jego ADRES SIECI TO: 145.168.2.192/30 \
 I ten adres sieci WRAZ Z MASKĄ zapisujemy w tej komendzie:
