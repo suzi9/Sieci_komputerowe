@@ -27,19 +27,19 @@ ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mi
 ```
 
 ## Sprawdzanie poprawności konfiguracji adresu loopback 
-Sprawdzamy to na routerach, na których została ta konfiguracja zrobiona.
+Sprawdzamy to na routerach, na których została ta konfiguracja zrobiona.\
 ```ps1
 >   run show interfaces lo0
 ```
-Prawidłowo to skonfigurowaliśmy jeżeli w wyświetlonych informacjach jest:
+Prawidłowo to skonfigurowaliśmy jeżeli w wyświetlonych informacjach jest:\
 Physical interface: lo0, Enabled, Physical link is Up
 
 A potem robimy:
 ```ps1
 >   run show interfaces lo0.'NUMEREK'
 ```
-Prawidłowo to skonfigurowaliśmy jeżeli w wyświetlonych informacjach dodatkowo jest:
-Local: 200.0.2.144
+Prawidłowo to skonfigurowaliśmy jeżeli w wyświetlonych informacjach dodatkowo jest:\
+Local: 200.0.2.144\
 200.0.2.144 to przykładowy adres, ale ogólnie powinien tam być adres dla loopbacka\
 który skonfigurowaliśmy na tym routerze
 
