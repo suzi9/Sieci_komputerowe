@@ -74,7 +74,7 @@ ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mi
 
 ## Konfigurowanie routingu statycznego
 Pamiętać że w routingu statycznym korzystamy z adresu sieci, czyli np. na kartce z obliczeniami/
-mamy VLAN o numerze 251 -> są tu 2 urządzenia -> a jego ADRES SIECI TO: 145.168.2.192/30
+mamy VLAN o numerze 251 -> są tu 2 urządzenia -> a jego ADRES SIECI TO: 145.168.2.192/30/
 I ten adres sieci WRAZ Z MASKĄ zapisujemy w tej komendzie:
 
 [Adres_sieci] -> przykładowy zapis w komendzie: 145.168.2.192/30
