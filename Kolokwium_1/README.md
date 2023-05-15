@@ -40,7 +40,7 @@ A potem robimy:
 ```
 Prawidłowo to skonfigurowaliśmy jeżeli w wyświetlonych informacjach dodatkowo jest:\
 Local: 200.0.2.144\
-200.0.2.144 to przykładowy adres, ale ogólnie powinien tam być adres dla loopbacka\
+200.0.2.144 to przykładowy adres, ale ogólnie powinien tam być adres dla loopbacka
 który skonfigurowaliśmy na tym routerze
 
 # 3 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
@@ -49,10 +49,17 @@ który skonfigurowaliśmy na tym routerze
 ```ps1
 > set routing-instances 'ROUTERX' protocols ospf area 0 interface ge-0/0/'INTERFEJS'.'VLAN'
 ```
+## Sprawdzanie poprawności skonfigurowania protokołu OSPF
+```ps1
+> run show ospf interface instance ROUTERX
+```
+Ważne aby sprawdzić czy odpowiednie interfejsy co zostały skonfigurowane, mają poprawną ilość\
+sąsiadów w tabelce Nbrs.
 
-## Konfigurować OSPF pasywny tam gdzie interfejs routera idzie do switcha???????????????????
-## czy to coś zmienia?????????????????
-
+## Konfigurowawnie OSPF na pasywny tam gdzie interfejs routera idzie do switcha -> tylko jeśli pisze O(p) a tak to jej nie dajemy
+```ps1
+> set routing-instances 'ROUTERX' protocols ospf area 0 interface ge-0/0/'INTERFEJS'.'VLAN' passive
+```
 
 # 4 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
@@ -76,6 +83,19 @@ który skonfigurowaliśmy na tym routerze
 > set routing-instances ROUTERX protocols rip group GRUPA1 export FROM-DIRECT-X
 ```
 
+# 6 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+
+## Redestrybucja tras z protokołu RIP do OSPF, i z OSPF do RIP
+Redestrybucja tras z protokołu RIP do OSPF:
+```ps1
+> set routing-instances ROUTERX protocols ospf export FROM-DIRECT-X
+```
+Redestrybucja tras z protokołu OSPF do RIP:
+```ps1
+> set policy-options policy-statement FROM-OSPF-'NUMEREK' from protocol ospf
+> set policy-options policy-statement FROM-OSPF-'NUMEREK' then accept
+> set routing-instances 'ROUTERX' protocols rip group GRUPA1 export FROM-OSPF-'NUMEREK'
+```
 
 # 7 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
 
@@ -83,8 +103,21 @@ który skonfigurowaliśmy na tym routerze
 ```ps1
 > set policy-options policy-statement REJECT-LOOPBACK-'NUMEREK' from interface lo0.'NUMEREK'
 > set policy-options policy-statement REJECT-LOOPBACK-'NUMEREK' then reject
-> set protocols rip export REJECT-LOOPBACK-'NUMEREK'  ## sprawdzić tą komendę przed jej wykonaniem a po, co się zmieni i czy na pewno ją trzeba
-> set protocols ospf export REJECT-LOOPBACK-'NUMEREK'  ## i tą również 
+```
+Potem gdy mamy na tym routerze protokół OSPF:
+```ps1
+> set routing-instances 'ROUTERX' protocols ospf export REJECT-LOOPBACK-'NUMEREK'
+```
+Potem gdy mamy na tym routerze protokół RIP:
+```ps1
+> set routing-instances ROUTERX protocols rip group GRUPA1 export REJECT-LOOPBACK-X
+```
+
+## Sprawdzenie czy interfejs loopback przestał być rozgłaszany
+Wpisujemy poniższą komende i patrzymy czy ten adres loopback (np. 200.0.X.nr_routera/32) który podaliśmy przy konfiguracji loopback
+jest tam wypisany dla naszego ROUTERX, jeżeli go nie ma to poprawnie wykonaliśmy powyższe komendy
+```ps1
+> run show route
 ```
 
 # 8 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
@@ -98,5 +131,5 @@ I ten adres sieci WRAZ Z MASKĄ zapisujemy w tej komendzie:
 [IP_routera] -> przykładowy zapis w komendzie: 193.168.X.30      -> pamiętamy że zapisujemy bez maski
 
 ```ps1
-> set routing-instances ROUTERX routing-options static route [Adres_sieci] next-hop [IP_routera]
+> set routing-instances ROUTERX routing-options static route [Adres_sieci]\maska next-hop [IP_routera_bez_maski]
 ```
