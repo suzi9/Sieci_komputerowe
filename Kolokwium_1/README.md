@@ -55,7 +55,7 @@ ZWRÓĆ UWAGĘ -> również na to że w 1 komendzie adres dla loopbacka może mi
 
 ## Sprawdzanie poprawności konfiguracji adresu loopback 
 ```ps1
->   run show interfaces lo0.'NUMEREK'
+>  run show interfaces lo0.'NUMEREK'
 ```
 Prawidłowo to skonfigurowaliśmy jeżeli w wyświetlonych informacjach dodatkowo jest:\
 Local: 200.0.2.144\
@@ -143,8 +143,15 @@ I ten adres sieci WRAZ Z MASKĄ zapisujemy w tej komendzie:
 [Adres_sieci] -> przykładowy zapis w komendzie: 145.168.2.192/30 \
 [IP_routera] -> przykładowy zapis w komendzie: 193.168.X.30      -> pamiętamy że zapisujemy bez maski
 
+Po wpisaniu poniższej komendy trasa statyczna będzie odrazu aktywna więc nie trzeba nic więcej po niej robić.
 ```ps1
 > set routing-instances ROUTERX routing-options static route [Adres_sieci]\maska next-hop [IP_routera_bez_maski]
+```
+
+A tu dodatokowa komenda która służy do aktywacji i deaktywacji ścieżek (mało prawdopodobne że na kolokwium
+będzie o to prosił)
+```ps1
+> activate / deactivate routing-instances ROUTERX routing-options static
 ```
 
 # 9 punkt ćwiczenia -> poniżej----------------------------------------------
