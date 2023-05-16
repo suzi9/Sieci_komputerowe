@@ -119,3 +119,21 @@ I ten adres sieci WRAZ Z MASKĄ zapisujemy w tej komendzie:
 ```ps1
 > set routing-instances ROUTERX routing-options static route [Adres_sieci]\maska next-hop [IP_routera_bez_maski]
 ```
+
+# 9 punkt ćwiczenia -> poniżej----------------------------------------------
+
+## Tworzenie ścieżki domyślnej
+```ps1
+> set routing-options static route 0.0.0.0/0 next-hop [IP_routera_bez_maski]
+```
+
+# Inne ważne komendy
+Jako iż nie mamy możliwości pingowania adresów w sieci jeśli mamy ich wiele, wtedy musimy ustalić
+dokładnie z którego routera to ma iść za pomocą poniższej komendy.
+```ps1
+> run ping [adres_IP] routing-instances ROUTERX
+```
+Natomiast ta komenda robi to samo co wyżej ale pokazuje nam nasz ścieżki
+```ps1
+> run traceroute [adres_IP_urządzenia_docelowego] routing instances ROUTERX
+```
