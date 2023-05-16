@@ -1,3 +1,30 @@
+# Początkowe przygotowanie
+Logowanie na urządzenie.
+```ps1
+> telnet -> 172.30.33.[numer_routera] 
+```
+
+Załadowanie konfiguracji wykonujemy tylko raz na danym routerze. Aby następnie na tej konfiguracji mogła\
+pracować cała grupa. 
+```ps1
+> configure private
+> load override LAN-GR1-dd.mm.rrr (jeżeli to nowe urządzenie to ładujemy basic.cfg)
+> commit
+```
+Osoby które zalogowały się na router przed załadowaniem konfiguracji, muszą wykonać polecenie:
+```ps1
+> update
+```
+
+Konfigurację powinna zapisać ostatnia osoba która planuje zakończyć działania na dzisiaj.\
+Ale jeżeli została by kilka razy zapisana, to się nic nie stanie bo jest wtedy nadpisywana.\
+Ważne aby zrobić "commit" przed zapisaniem konfiguracji.
+```ps1
+> commit
+> update
+> save LAN-GR1-dd.mm.rrr
+```
+
 # 1 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Tworzymy wirtualny router i dodajemy do niego interfejs
@@ -131,7 +158,7 @@ I ten adres sieci WRAZ Z MASKĄ zapisujemy w tej komendzie:
 Jako iż nie mamy możliwości pingowania adresów w sieci jeśli mamy ich wiele, wtedy musimy ustalić
 dokładnie z którego routera to ma iść za pomocą poniższej komendy.
 ```ps1
-> run ping [adres_IP] routing-instances ROUTERX
+> run ping [adres_IP_urządzenia_docelowego] routing-instances ROUTERX
 ```
 Natomiast ta komenda robi to samo co wyżej ale pokazuje nam nasz ścieżki
 ```ps1
