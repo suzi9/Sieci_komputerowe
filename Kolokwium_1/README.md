@@ -97,6 +97,7 @@ Redestrybucja tras z protokołu OSPF do RIP:
 > set policy-options policy-statement POLITYKAX-REJECT-LOOPBACK from prefix-list LISTAX-LOOPBACK
 > set policy-options policy-statement POLITYKAX-REJECT-LOOPBACK then reject
 > insert routing-instances ROUTERX protocols [rip/ospf] group GRUPA1 export POLITYKAX-REJECT-LOOPBACK before DIRECTX
+```
 
 ## Sprawdzenie czy interfejs loopback przestał być rozgłaszany
 Wpisujemy poniższą komende i patrzymy czy ten adres loopback (np. 200.0.X.nr_routera/32) który podaliśmy przy konfiguracji loopback
