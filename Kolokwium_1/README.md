@@ -1,4 +1,4 @@
-# 1 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# 1 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Tworzymy wirtualny router i dodajemy do niego interfejs
 ```ps1
@@ -13,7 +13,7 @@
 > set interfaces ge-0/0/1 unit X00 family inet address 192.168.X.INTERFEJS (np .9/30)
 ```
 
-# 2 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# 2 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Konfigurowanie adresu loopback na routerach korzystających z protokołu OSPF
 Wszysto co jest w '' np. 'NUMEREK' wymienamy np. na 2. Czyli swój własny numerek \
@@ -43,7 +43,7 @@ Local: 200.0.2.144\
 200.0.2.144 to przykładowy adres, ale ogólnie powinien tam być adres dla loopbacka
 który skonfigurowaliśmy na tym routerze
 
-# 3 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# 3 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Konfigurowanie protokołu OSPF
 ```ps1
@@ -61,34 +61,34 @@ sąsiadów w tabelce Nbrs.
 > set routing-instances 'ROUTERX' protocols ospf area 0 interface ge-0/0/'INTERFEJS'.'VLAN' passive
 ```
 
-# 4 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# 4 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Konfigurowanie protokołu RIP
 ```ps1
 > set routing-instances ROUTERX protocols rip group GRUPA1 neighbor ge-0/0/1.X00
 ```
 
-# 5 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# 5 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Rozgłaszanie w protokole RIP wszystkich informacji o trasach otrzymanych z protokołu RIP
 ```ps1
-> set policy-options policy-statement FROM-RIP-X from protocol rip
-> set policy-options policy-statement FROM-RIP-X then accept
-> set routing-instances ROUTERX protocols rip group GRUPA1 export FROM-RIP-X
+> set policy-options policy-statement POLITYKAX-RIP from protocol rip
+> set policy-options policy-statement POLITYKAX-RIP then accept
+> set routing-instances ROUTERX protocols rip group GRUPA1 export POLITYKAX-RIP
 ```
 ## Rozgłaszanie w protokole RIP wszystkie informacje trasy bezpośrednio podłączonej
 ```ps1
-> set policy-options policy-statement FROM-DIRECT-X from protocol direct
-> set policy-options policy-statement FROM-DIRECT-X then accept
-> set routing-instances ROUTERX protocols rip group GRUPA1 export FROM-DIRECT-X
+> set policy-options policy-statement DIRECTX from protocol direct
+> set policy-options policy-statement DIRECTX then accept
+> set routing-instances ROUTERX protocols rip group GRUPA1 export DIRECTX
 ```
 
-# 6 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# 6 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Redestrybucja tras z protokołu RIP do OSPF, i z OSPF do RIP
 Redestrybucja tras z protokołu RIP do OSPF:
 ```ps1
-> set routing-instances ROUTERX protocols ospf export FROM-DIRECT-X
+> set routing-instances ROUTERX protocols ospf export DIRECTX
 ```
 Redestrybucja tras z protokołu OSPF do RIP:
 ```ps1
@@ -97,10 +97,17 @@ Redestrybucja tras z protokołu OSPF do RIP:
 > set routing-instances 'ROUTERX' protocols rip group GRUPA1 export FROM-OSPF-'NUMEREK'
 ```
 
-# 7 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# 7 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Polityka zapewniająca to że adresy interfejsów loopback nie będą rozgłaszane przez protokół RIP oraz OSPF
 ```ps1
+> set policy-options prefix-list LISTAX-LOOPBACK [adres_loopback_tego_urządzenia+maska]
+> set policy-options policy-statement POLITYKAX-REJECT-LOOPBACK from prefix-list LISTAX-LOOPBACK
+> set policy-options policy-statement POLITYKAX-REJECT-LOOPBACK then reject
+> insert routing-instances ROUTERX protocols [rip/ospf] group GRUPA1 export POLITYKAX-REJECT-LOOPBACK before DIRECTX
+
+
+
 > set policy-options policy-statement REJECT-LOOPBACK-'NUMEREK' from interface lo0.'NUMEREK'
 > set policy-options policy-statement REJECT-LOOPBACK-'NUMEREK' then reject
 ```
@@ -120,7 +127,7 @@ jest tam wypisany dla naszego ROUTERX, jeżeli go nie ma to poprawnie wykonaliś
 > run show route
 ```
 
-# 8 punkt ćwiczenia -> poniżej-------------------------------------------------------------------
+# 8 punkt ćwiczenia -> poniżej----------------------------------------------
 
 ## Konfigurowanie routingu statycznego
 Pamiętać że w routingu statycznym korzystamy z adresu sieci, czyli np. na kartce z obliczeniami \
