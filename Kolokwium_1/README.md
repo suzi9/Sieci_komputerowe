@@ -97,9 +97,9 @@ sąsiadów w tabelce Nbrs.
 ```
 ## Rozgłaszanie w protokole RIP wszystkie informacje trasy bezpośrednio podłączonej
 ```ps1
-> set policy-options policy-statement DIRECTX from protocol direct
-> set policy-options policy-statement DIRECTX then accept
-> set routing-instances ROUTERX protocols rip group GRUPA1 export DIRECTX
+> set policy-options policy-statement POLITYKAX-DIRECT from protocol direct
+> set policy-options policy-statement POLITYKAX-DIRECT then accept
+> set routing-instances ROUTERX protocols rip group GRUPA1 export POLITYKAX-DIRECT
 ```
 
 # 6 punkt ćwiczenia -> poniżej----------------------------------------------
@@ -107,7 +107,7 @@ sąsiadów w tabelce Nbrs.
 ## Redestrybucja tras z protokołu RIP do OSPF, i z OSPF do RIP
 Redestrybucja tras z protokołu RIP do OSPF:
 ```ps1
-> set routing-instances ROUTERX protocols ospf export DIRECTX
+> set routing-instances ROUTERX protocols ospf export POLITYKAX-DIRECT
 ```
 Redestrybucja tras z protokołu OSPF do RIP:
 ```ps1
@@ -120,10 +120,23 @@ Redestrybucja tras z protokołu OSPF do RIP:
 
 ## Polityka zapewniająca to że adresy interfejsów loopback nie będą rozgłaszane przez protokół RIP oraz OSPF
 ```ps1
-> set policy-options prefix-list LISTAX-LOOPBACK [adres_loopback_tego_urządzenia+maska]
+> set policy-options prefix-list LISTAX-LOOPBACK [adres_loopback_tego_urządzenia \ maska]
 > set policy-options policy-statement POLITYKAX-REJECT-LOOPBACK from prefix-list LISTAX-LOOPBACK
 > set policy-options policy-statement POLITYKAX-REJECT-LOOPBACK then reject
-> insert routing-instances ROUTERX protocols [rip/ospf] group GRUPA1 export POLITYKAX-REJECT-LOOPBACK before DIRECTX
+```
+## Importowanie ignorowania loopback do RIP'a
+```ps1
+> insert routing-instances ROUTERX protocols rip group GRUPA1 export POLITYKAX-REJECT-LOOPBACK before POLITYKAX-DIRECT
+```
+
+## Importowanie ignorowania loopback do OSPF'a na routerze na którym też jest RIP
+```ps1
+> insert routing-instances ROUTERX protocols ospf export POLITYKAX-REJECT-LOOPBACK before POLITYKAX-DIRECT
+```
+
+## Importowanie ignorowania loopback do OSPF'a na routerze bez RIP'a
+```ps1
+> set routing-instances ROUTERX protocols ospf export POLITYKAX-REJECT-LOOPBACK
 ```
 
 ## Sprawdzenie czy interfejs loopback przestał być rozgłaszany
