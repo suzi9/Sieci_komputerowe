@@ -37,7 +37,7 @@ Ważne aby zrobić "commit" przed zapisaniem konfiguracji.
 ```ps1
 > set interfaces ge-0/0/1 vlan-tagging
 > set interfaces ge-0/0/1 unit X00 vlan-id X00
-> set interfaces ge-0/0/1 unit X00 family inet address 192.168.X.INTERFEJS (np .9/30)
+> set interfaces ge-0/0/1 unit X00 family inet address 192.168.X.INTERFEJS\maska
 ```
 
 # 2 punkt ćwiczenia -> poniżej----------------------------------------------
